@@ -1,0 +1,264 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * House Of Nyibiba design system — warm earthy luxury boutique.
+ * All colours are oklch semantic tokens. Never hardcode colours in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-clay: var(--clay);
+  --color-brass: var(--brass);
+  --color-olive: var(--olive);
+  --color-ink: var(--ink);
+  --color-sand: var(--sand);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: oklch(0.972 0.012 80);
+  --foreground: oklch(0.26 0.028 45);
+  --card: oklch(0.985 0.008 85);
+  --card-foreground: oklch(0.26 0.028 45);
+  --popover: oklch(0.985 0.008 85);
+  --popover-foreground: oklch(0.26 0.028 45);
+
+  --primary: oklch(0.47 0.115 44);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.93 0.022 80);
+  --secondary-foreground: oklch(0.32 0.03 45);
+  --muted: oklch(0.94 0.016 82);
+  --muted-foreground: oklch(0.48 0.024 55);
+  --accent: oklch(0.72 0.098 72);
+  --accent-foreground: oklch(0.24 0.03 45);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.98 0.01 85);
+
+  --border: oklch(0.88 0.02 78);
+  --input: oklch(0.88 0.02 78);
+  --ring: oklch(0.72 0.098 72);
+
+  --clay: oklch(0.47 0.115 44);
+  --brass: oklch(0.72 0.098 72);
+  --olive: oklch(0.45 0.045 120);
+  --ink: oklch(0.22 0.022 48);
+  --sand: oklch(0.9 0.026 80);
+
+  --shadow-soft: 0 1px 2px oklch(0.26 0.028 45 / 0.06), 0 12px 40px -18px oklch(0.26 0.028 45 / 0.24);
+  --shadow-lift: 0 24px 60px -28px oklch(0.26 0.028 45 / 0.4);
+  --gradient-warm: linear-gradient(135deg, var(--clay), var(--brass));
+}
+
+.dark {
+  --background: oklch(0.19 0.02 48);
+  --foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.24 0.024 48);
+  --card-foreground: oklch(0.95 0.012 85);
+  --popover: oklch(0.24 0.024 48);
+  --popover-foreground: oklch(0.95 0.012 85);
+  --primary: oklch(0.68 0.12 52);
+  --primary-foreground: oklch(0.19 0.02 48);
+  --secondary: oklch(0.29 0.026 48);
+  --secondary-foreground: oklch(0.95 0.012 85);
+  --muted: oklch(0.29 0.026 48);
+  --muted-foreground: oklch(0.74 0.02 70);
+  --accent: oklch(0.75 0.1 72);
+  --accent-foreground: oklch(0.19 0.02 48);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.75 0.1 72);
+  --sand: oklch(0.29 0.026 48);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility gradient-warm {
+  background-image: var(--gradient-warm);
+}
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  padding: 0.875rem 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 220ms ease;
+  cursor: pointer;
+}
+
+@utility btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  &:hover {
+    background-color: color-mix(in oklab, var(--color-primary) 88%, black);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility btn-outline {
+  border: 1px solid color-mix(in oklab, currentColor 40%, transparent);
+  color: currentColor;
+  &:hover {
+    background-color: color-mix(in oklab, currentColor 10%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-brass {
+  background-color: var(--color-brass);
+  color: var(--color-accent-foreground);
+  &:hover {
+    background-color: color-mix(in oklab, var(--color-brass) 88%, black);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility field {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-input);
+  background-color: var(--color-card);
+  padding: 0.75rem 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--color-foreground);
+  &:focus {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 1px;
+  }
+}
+
+@utility rule {
+  height: 1px;
+  width: 3.5rem;
+  background-color: var(--color-brass);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@utility animate-slow-zoom {
+  animation: slow-zoom 14s ease-out both;
+}
+
+@keyframes cover-crossfade {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@utility animate-cover-a {
+  animation:
+    cover-crossfade 22s ease-in-out infinite,
+    slow-zoom 14s ease-out both;
+}
+
+@utility animate-cover-b {
+  animation:
+    cover-crossfade 22s ease-in-out infinite -11s,
+    slow-zoom 14s ease-out both;
+}
